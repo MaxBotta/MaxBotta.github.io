@@ -1,0 +1,115 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background: rgb(40,40,40);
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.page-wrapper {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.counter-container {
+    position: relative;
+    width: 280px;
+    height: 60px;
+    /* border: 1px solid white; */
+    box-sizing: border-box;
+    padding: 10px 6px;
+    margin: 40px auto;
+    color: white;
+    font-size: 40px;
+    display: flex;
+
+}
+.counter {
+    position: relative;
+    margin: auto;
+    width: 60px;
+    height: 100%;
+    /* border: 1px solid white; */
+    box-sizing: border-box;
+    text-align: center;
+    /* padding: 0px 6px; */
+
+}
+
+.start-button {
+    background: rgb(92, 199, 42);
+    border: none;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin: auto;
+}
+.stop {
+    background: rgb(192, 59, 59);
+}
+
+#money-counter {
+    text-align: right;
+}
+#money {
+    width: 100px;
+    text-align: right;
+    margin-left: auto;
+    margin-right: 0px;
+}
+
+#payment-input {
+    margin: 0px 4px;
+    margin-top: 2px;
+    border: none;
+    border-bottom: 1px solid rgb(140,140,140);
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 40px;
+    text-align: right;
+    width: 100px;
+    height: 100%;
+    margin-left: auto;
+}
+
+#cent-image {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translate(-30px, -50%);
+    width: 60px;
+    height: auto;
+    animation: 1.5s rotate linear;
+    z-index: -1;
+    opacity: 0;
+}
+
+.button-container {
+    width: 200px;
+    display: flex;
+    margin: 100px auto;
+    margin-top: 200px;
+}
+#reset-button {
+    background: rgb(100,100,100);
+}
+
+@keyframes rotate {
+    0% {
+        top: -30px;
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: translate(-50%, 60px) rotate(-360deg);
+    }
+}
