@@ -26,31 +26,54 @@
 
 <body>
     <div id="page-wrapper" class="page-wrapper">
-        <div id="time-counter" class="counter-container">
-            <div id="minutes" class="counter">
-                00
+        
+        <div id="clock-container" class="clock-container">
+            <div id="clock-seconds" class="clock clock-seconds">
+                <diV class="clock-dot">
+
+                </diV>
             </div>
-            <div id="seconds" class="counter">
-                00
+            <div id="clock-minutes" class="clock clock-minutes">
+                <diV class="clock-dot">
+
+                </diV>
             </div>
-            <div id="hundreths" class="counter">
-                00
+            <div id="clock-hours" class="clock clock-hours">
+                <!-- <diV class="clock-dot">
+
+                </diV> -->
+            </div>
+            <div id="money-counter" class="">
+                <div id="money" class="counter">
+                    0&euro;
+                </div>
+            </div>
+
+            <div id="time-counter" class="">
+                <div id="minutes" class="counter">
+                    00
+                </div>
+                <div id="seconds" class="counter">
+                    00
+                </div>
+                <div id="hundreths" class="counter">
+                    00
+                </div>
             </div>
         </div>
-        <div id="money-counter" class="counter-container">
-            <div id="money" class="counter">
-                0&euro;
-            </div>
-        </div>
-        <div class="counter-container">
+
+        <div id="payment-container">
             <input type="text" id="payment-input" value="12">
             &euro;/h
             </input>
         </div>
         <div class="button-container">
-            <button id="reset-button" class="start-button" onCLick="resetCounter()">
+            <button id="reset-button" class="button" onCLick="resetCounter()">
+                <img src="reset-white.png" />
             </button>
-            <button id="timer-button" class="start-button" onCLick="toggleCounter()">
+            <button id="play-button" class="button" onCLick="toggleCounter()">
+                <img id="play-icon" src="play-white.png" />
+                <img id="pause-icon" src="pause-white.png" />
             </button>
 
         </div>

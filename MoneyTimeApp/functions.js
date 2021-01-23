@@ -12,19 +12,41 @@ let payment = 12;
 let euros = 0;
 let oldEuros = 0;
 
+document.addEventListener('visibilitychange', function() {
+    console.log("visibility change")
+    console.log(document.hidden); // whether or not the tab is visible
+
+    //save state
+    if(document.hidden) {
+        
+    }
+});
+
 function toggleCounter() {
-    let timeButton = document.getElementById("timer-button");
+    let playButton = document.getElementById("play-button");
     let minDiv = document.getElementById("minutes");
     let secDiv = document.getElementById("seconds");
     let hundrethsDiv = document.getElementById("hundreths");
     let paymentInput = document.getElementById("payment-input");
     let moneyDiv = document.getElementById("money");
 
+    let clockContainer = document.getElementById("clock-container");
+    let clockSeconds = document.getElementById("clock-seconds");
+    let clockMinutes = document.getElementById("clock-minutes");
+
+    let playIcon = document.getElementById("play-icon");
+    let pauseIcon = document.getElementById("pause-icon");
+
+    let oldSec = -1;
+
     if (!counterOn) {
         payment = paymentInput.value;
         paymentInput.disabled = true;
 
-        timeButton.classList.add("stop");
+        playIcon.style.opacity = "0";
+        pauseIcon.style.opacity = "1";
+
+        playButton.classList.add("stop");
         counterOn = true;
         timerInterval = setInterval(() => {
             hundreth += 1;
@@ -33,10 +55,13 @@ function toggleCounter() {
                 sec += 1;
                 hundreth = 0;
             }
-
             if (sec === 60) {
                 min += 1;
                 sec = 0;
+            }
+            if (min === 60) {
+                hours += 1;
+                min = 0;
             }
 
             let minString = min >= 10 ? min : `0${min}`;
@@ -51,16 +76,30 @@ function toggleCounter() {
             euros += ((payment / 60) / 60) / 100;
             moneyDiv.innerHTML = `${euros.toFixed(2)}&euro;`;
 
-            if (parseInt(euros * 100) + 1 > parseInt(oldEuros * 100) + 1) {
-                console.log("new cent");
-                oldEuros = euros;
-                fallingCent();
+            // if (parseInt(euros * 100) + 1 > parseInt(oldEuros * 100) + 1) {
+            //     console.log("new cent");
+            //     oldEuros = euros;
+            //     fallingCent();
+            // }
+
+            //Animate Clock
+            if(sec > oldSec) {
+                let newClockSeconds = clockSeconds.cloneNode(true);
+                clockContainer.insertBefore(newClockSeconds, clockContainer.children[1]);
+                newClockSeconds.style.transform = `translate(-50%, -50%) rotate(${sec * 6}deg)`;
+                newClockSeconds.style.background = "none";
+                oldSec = sec;
             }
 
+            clockSeconds.style.transform = `translate(-50%, -50%) rotate(${ hundreth * 0.06 + sec * 6}deg)`;
+            clockMinutes.style.transform = `translate(-50%, -50%) rotate(${ sec * 0.1 + min * 6}deg)`;
+            // clockHours.style.transform = `translate(-50%, -50%) rotate(${ min * 0.1 + sec * 6}deg)`;
 
         }, 10);
     } else {
-        timeButton.classList.remove("stop");
+        playIcon.style.opacity = "1";
+        pauseIcon.style.opacity = "0";
+        playButton.classList.remove("stop");
         counterOn = false;
         clearInterval(timerInterval);
     }
@@ -68,12 +107,19 @@ function toggleCounter() {
 }
 
 function resetCounter() {
-    let timeButton = document.getElementById("timer-button");
+    let playIcon = document.getElementById("play-icon");
+    let pauseIcon = document.getElementById("pause-icon");
+    playIcon.style.opacity = "1";
+    pauseIcon.style.opacity = "0";
+    let timeButton = document.getElementById("play-button");
     let minDiv = document.getElementById("minutes");
     let secDiv = document.getElementById("seconds");
     let hundrethsDiv = document.getElementById("hundreths");
     let paymentInput = document.getElementById("payment-input");
     let moneyDiv = document.getElementById("money");
+
+    let clockSeconds = document.getElementById("clock-seconds");
+    let clockMinutes = document.getElementById("clock-minutes");
 
     clearInterval(timerInterval);
     timeButton.classList.remove("stop");
@@ -99,6 +145,10 @@ function resetCounter() {
     //Calculate money
     euros += ((payment / 60) / 60) / 100;
     moneyDiv.innerHTML = `${euros.toFixed(2)}&euro;`;
+
+
+    clockSeconds.style.transform = `translate(-50%, -50%) rotate(${ hundreth * 0.06 + sec * 6}deg)`;
+    clockMinutes.style.transform = `translate(-50%, -50%) rotate(${ sec * 0.1 + min * 6}deg)`;
 
 }
 

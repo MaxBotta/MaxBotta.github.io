@@ -4,6 +4,11 @@ body {
     background: rgb(40,40,40);
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
 }
 
 .page-wrapper {
@@ -13,6 +18,47 @@ body {
     overflow: hidden;
     box-sizing: border-box;
     text-align: center;
+}
+
+
+.clock-container {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+}
+.clock {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: black;
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+}
+.clock-minutes {
+    width: 260px;
+    height: 260px;
+    background: rgb(20,20,20);
+}
+.clock-hours {
+    width: 220px;
+    height: 220px;
+    background: rgb(40,40,40);
+}
+
+.clock-dot {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    width: 2px;
+    height: 20px;
+    /* border-radius: 100%; */
 }
 
 .counter-container {
@@ -28,10 +74,38 @@ body {
     display: flex;
 
 }
+
+#money-counter {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 50px;
+    color: white;
+    width: auto;
+}
+#money {
+    width: auto;
+    margin-left: 30px;
+    text-align: right;
+    margin-right: 0px;
+}
+
+#time-counter {
+    position: absolute;
+    left: 50%;
+    top: 60px;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    color: rgb(220,220,220);
+    display: flex;
+}
+
 .counter {
     position: relative;
     margin: auto;
-    width: 60px;
+    width: 40px;
     height: 100%;
     /* border: 1px solid white; */
     box-sizing: border-box;
@@ -40,43 +114,28 @@ body {
 
 }
 
-.start-button {
-    background: rgb(92, 199, 42);
-    border: none;
-    width: 80px;
-    height: 80px;
-    border-radius: 40px;
-    outline: none;
-    color: white;
-    font-size: 14px;
-    box-sizing: border-box;
-    margin: auto;
-}
-.stop {
-    background: rgb(192, 59, 59);
-}
 
-#money-counter {
-    text-align: right;
-}
-#money {
-    width: 100px;
-    text-align: right;
-    margin-left: auto;
-    margin-right: 0px;
+#payment-container {
+    position: absolute;
+    left: 50%;
+    top: 440px;
+    margin-left: 10px;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
 }
 
 #payment-input {
     margin: 0px 4px;
     margin-top: 2px;
     border: none;
-    border-bottom: 1px solid rgb(140,140,140);
+    /* border-bottom: 1px solid rgb(140,140,140); */
     outline: none;
     background: none;
     color: white;
     font-size: 40px;
     text-align: right;
-    width: 100px;
+    width: 80px;
     height: 100%;
     margin-left: auto;
 }
@@ -94,13 +153,56 @@ body {
 }
 
 .button-container {
-    width: 200px;
-    display: flex;
-    margin: 100px auto;
-    margin-top: 200px;
+    position: absolute;
+    left: 0px;
+    bottom: 20px;
+    /* transform: translate(-50%, -50%); */
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+}
+.button {
+    border: none;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin: auto;
+}
+.button img {
+    width: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.stop {
+    background: rgb(192, 59, 59);
+}
+#play-button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.2);
+}
+#play-icon {
+    margin-left: 4px;
+}
+#pause-icon {
+    opacity: 0;
 }
 #reset-button {
-    background: rgb(100,100,100);
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    left: 80px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.2);
 }
 
 @keyframes rotate {
