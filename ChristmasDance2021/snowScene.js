@@ -130,7 +130,7 @@ loadingManager.onLoad = function () {
     let button = document.getElementById("start-button");
     button.style.display = "block";
 
-    window.addEventListener('touchstart', () => { sound.play(); });
+    window.addEventListener('touchstart', () => { loadMusic() });
 
 
     button.addEventListener("click", () => {
@@ -138,7 +138,7 @@ loadingManager.onLoad = function () {
         let overlay = document.getElementById("overlay");
         overlay.style.display = "none";
 
-        sound.play();
+        loadMusic();
         orbitControls.autoRotate = true;
         clock.start();
 
@@ -465,6 +465,7 @@ const loadMusic = () => {
         sound.setBuffer(buffer);
         sound.setLoop(true);
         sound.setVolume(0.5);
+        sound.play();
     });
 }
 
