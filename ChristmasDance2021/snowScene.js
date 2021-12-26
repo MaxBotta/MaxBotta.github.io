@@ -130,6 +130,12 @@ loadingManager.onLoad = function () {
     let button = document.getElementById("start-button");
     button.style.display = "block";
 
+    window.addEventListener('touchstart', function() {
+
+        loadMusic();
+    
+    }, false);
+
 
     button.addEventListener("click", () => {
 
