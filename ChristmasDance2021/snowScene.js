@@ -130,15 +130,15 @@ loadingManager.onLoad = function () {
     let button = document.getElementById("start-button");
     button.style.display = "block";
 
-    window.addEventListener('touchstart', loadMusic);
+    window.addEventListener('touchstart', () => { sound.play(); });
 
 
     button.addEventListener("click", () => {
 
         let overlay = document.getElementById("overlay");
         overlay.style.display = "none";
-        
-        loadMusic();
+
+        sound.play();
         orbitControls.autoRotate = true;
         clock.start();
 
@@ -274,7 +274,7 @@ const render = (timeStamp) => {
     }
 
     // console.log(camera.position);
-    if(camera.position.z < 620 && camera.position.z > 580 && clock.getElapsedTime() > 4) {
+    if (camera.position.z < 620 && camera.position.z > 580 && clock.getElapsedTime() > 4) {
         // camera.position.set(0, 400, 600);
         orbitControls.autoRotate = false;
     }
@@ -465,7 +465,6 @@ const loadMusic = () => {
         sound.setBuffer(buffer);
         sound.setLoop(true);
         sound.setVolume(0.5);
-        sound.play();
     });
 }
 
