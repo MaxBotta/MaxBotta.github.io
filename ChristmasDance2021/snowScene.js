@@ -136,7 +136,7 @@ loadingManager.onLoad = function () {
         let overlay = document.getElementById("overlay");
         overlay.style.display = "none";
         
-        sound.play();
+        loadMusic();
         orbitControls.autoRotate = true;
         clock.start();
 
@@ -463,6 +463,7 @@ const loadMusic = () => {
         sound.setBuffer(buffer);
         sound.setLoop(true);
         sound.setVolume(0.5);
+        sound.play();
     });
 }
 
