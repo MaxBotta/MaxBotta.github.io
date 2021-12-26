@@ -271,7 +271,7 @@ const render = (timeStamp) => {
         mixers.map(m => m.update(delta));
     }
 
-    console.log(camera.position);
+    // console.log(camera.position);
     if(camera.position.z < 620 && camera.position.z > 580 && clock.getElapsedTime() > 4) {
         // camera.position.set(0, 400, 600);
         orbitControls.autoRotate = false;
@@ -478,7 +478,7 @@ function LoadModel(path, pos, scale, rotation) {
         fbx.traverse(c => {
             c.castShadow = true;
             c.receiveShadow = true;
-            console.log(c.material);
+            // console.log(c.material);
         });
 
         scene.add(fbx);
