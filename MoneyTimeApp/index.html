@@ -26,7 +26,7 @@
 
 <body>
     <div id="page-wrapper" class="page-wrapper">
-        
+
         <div id="clock-container" class="clock-container">
             <div id="clock-seconds" class="clock clock-seconds">
                 <diV class="clock-dot">
@@ -45,7 +45,7 @@
             </div>
             <div id="money-counter" class="">
                 <div id="money" class="counter">
-                    0&euro;
+                    0/&euro;
                 </div>
             </div>
 
@@ -62,11 +62,8 @@
             </div>
         </div>
 
-        <div id="payment-container">
-            <input type="text" id="payment-input" value="12">
-            &euro;/h
-            </input>
-        </div>
+        <div id="payment-text">0 &euro;/h</div>
+
         <div class="button-container">
             <button id="reset-button" class="button" onCLick="resetCounter()">
                 <img src="reset-white.png" />
@@ -75,10 +72,21 @@
                 <img id="play-icon" src="play-white.png" />
                 <img id="pause-icon" src="pause-white.png" />
             </button>
+            <div id="payment-button" class="button" onclick="togglePaymentButton()">
+            </div>
+            <!-- <div id="slider-tooltip"></div> -->
+            <input type="range" min="1" max="100" value="100" class="slider" id="payment-slider">
+
 
         </div>
 
-        <img id="cent-image" src="1-cent.png" />
+        <!-- <img id="cent-image" src="1-cent.png" /> -->
+<!-- 
+        <div id="payment-container">
+            <input type="text" id="payment-input" value="12">
+            &euro;/h
+            </input>
+        </div> -->
 
     </div>
 

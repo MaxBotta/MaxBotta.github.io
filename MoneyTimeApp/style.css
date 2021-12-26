@@ -34,10 +34,13 @@ img {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background: black;
+    background: rgb(10, 10, 10);
     width: 300px;
     height: 300px;
     border-radius: 100%;
+}
+.clock-seconds {
+    background: rgb(30, 30, 30);
 }
 .clock-minutes {
     width: 260px;
@@ -47,7 +50,7 @@ img {
 .clock-hours {
     width: 220px;
     height: 220px;
-    background: rgb(40,40,40);
+    /* background: rgb(40,40,40); */
 }
 
 .clock-dot {
@@ -56,9 +59,16 @@ img {
     left: 50%;
     transform: translateX(-50%);
     background: white;
-    width: 2px;
+    width: 1px;
     height: 20px;
     /* border-radius: 100%; */
+}
+.clock-minutes .clock-dot {
+    width: 2px;
+}
+.clock-seconds .clock-dot {
+    width: 1px;
+    background: rgb(233, 72, 57);
 }
 
 .counter-container {
@@ -87,8 +97,6 @@ img {
 }
 #money {
     width: auto;
-    margin-left: 30px;
-    text-align: right;
     margin-right: 0px;
 }
 
@@ -118,11 +126,16 @@ img {
 #payment-container {
     position: absolute;
     left: 50%;
-    top: 440px;
-    margin-left: 10px;
+    top: 50%;
     transform: translate(-50%, -50%);
     color: white;
     font-size: 20px;
+    opacity: 1;
+    background: rgb(10,10,10);
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
 }
 
 #payment-input {
@@ -157,7 +170,7 @@ img {
     left: 0px;
     bottom: 20px;
     /* transform: translate(-50%, -50%); */
-    width: 100%;
+    width: 100vw;
     height: 100px;
     box-sizing: border-box;
 }
@@ -170,7 +183,9 @@ img {
     color: white;
     font-size: 14px;
     box-sizing: border-box;
-    margin: auto;
+    /* box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2); */
+    background: rgba(0, 0, 0, 0.2);
+    /* border: 10px solid rgba(0,0,0,0.1); */
 }
 .button img {
     width: 60%;
@@ -180,14 +195,13 @@ img {
     transform: translate(-50%, -50%);
 }
 .stop {
-    background: rgb(192, 59, 59);
+    background: rgba(233, 72, 57, 0.2);
 }
 #play-button {
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.2);
+    bottom: 50%;
+    transform: translate(-50%, 50%);
 }
 #play-icon {
     margin-left: 4px;
@@ -200,9 +214,23 @@ img {
     width: 60px;
     height: 60px;
     left: 80px;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.2);
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+}
+#payment-button {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    right: 80px;
+    bottom: 50%;
+    transform: translate(50%, 50%) rotate(90deg);
+    transition: 0.3s;
+}
+
+.active {
+    width: 300px !important;
+    bottom: 50% !important;
+    transform: translate(50%, -150%) rotate(90deg) !important;
 }
 
 @keyframes rotate {
@@ -215,3 +243,67 @@ img {
         transform: translate(-50%, 60px) rotate(-360deg);
     }
 }
+
+.slider-container {
+    height: 60px;
+    width: auto;
+    background: silver;
+}
+#slider-tooltip {
+    width: 100px;
+    height: 60px;
+    position: absolute;
+    bottom: 100px;
+    right: 32px;
+    background: rgba(0,0,0,1);
+    border-radius: 10px;
+}
+
+#payment-text {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: white;
+}
+
+/* The slider itself */
+#payment-slider {
+    position: absolute;
+    right: 80px;
+    bottom: 50%;
+    transform: translate(50%, 50%) rotate(90deg);
+    transition: 0.3s;
+    visibility: hidden;
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 60px; /* Full-width */
+    height: 60px; /* Specified height */
+    background: rgba(0,0,0,0.2); /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 1; /* Set transparency (for mouse-over effects on hover) */
+    border-radius: 30px;
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 60px; /* Set a specific slider handle width */
+    height: 60px; /* Slider handle height */
+    background: rgb(0, 0, 0); /* Green background */
+    border-radius: 100%;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }

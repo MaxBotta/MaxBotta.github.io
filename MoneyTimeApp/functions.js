@@ -12,13 +12,13 @@ let payment = 12;
 let euros = 0;
 let oldEuros = 0;
 
-document.addEventListener('visibilitychange', function() {
+document.addEventListener('visibilitychange', function () {
     console.log("visibility change")
     console.log(document.hidden); // whether or not the tab is visible
 
     //save state
-    if(document.hidden) {
-        
+    if (document.hidden) {
+
     }
 });
 
@@ -74,7 +74,7 @@ function toggleCounter() {
 
             //Calculate money
             euros += ((payment / 60) / 60) / 100;
-            moneyDiv.innerHTML = `${euros.toFixed(2)}&euro;`;
+            moneyDiv.innerHTML = `${euros.toFixed(2)}/&euro;`;
 
             // if (parseInt(euros * 100) + 1 > parseInt(oldEuros * 100) + 1) {
             //     console.log("new cent");
@@ -82,17 +82,28 @@ function toggleCounter() {
             //     fallingCent();
             // }
 
-            //Animate Clock
-            if(sec > oldSec) {
-                let newClockSeconds = clockSeconds.cloneNode(true);
-                clockContainer.insertBefore(newClockSeconds, clockContainer.children[1]);
-                newClockSeconds.style.transform = `translate(-50%, -50%) rotate(${sec * 6}deg)`;
-                newClockSeconds.style.background = "none";
-                oldSec = sec;
-            }
 
-            clockSeconds.style.transform = `translate(-50%, -50%) rotate(${ hundreth * 0.06 + sec * 6}deg)`;
-            clockMinutes.style.transform = `translate(-50%, -50%) rotate(${ sec * 0.1 + min * 6}deg)`;
+            // //Remove clock elements except last one after one minute
+            // if(sec === 0 && oldSec === 59) {
+            //     let c = clockContainer.getElementsByClassName("clock clock-seconds");
+            //     console.log(c);
+            //     for(let e of c) {
+            //         e.innerHTML = "";
+            //         e.remove();
+            //     }
+            //     oldSec = 0;
+            // }
+            // //Animate Clock
+            // if(sec > oldSec) {
+            //     let newClockSeconds = clockSeconds.cloneNode(true);
+            //     clockContainer.insertBefore(newClockSeconds, clockContainer.children[1]);
+            //     newClockSeconds.style.transform = `translate(-50%, -50%) rotate(${sec * 6}deg)`;
+            //     newClockSeconds.style.background = "none";
+            //     oldSec = sec;
+            // }
+
+            clockSeconds.style.transform = `translate(-50%, -50%) rotate(${hundreth * 0.06 + sec * 6}deg)`;
+            clockMinutes.style.transform = `translate(-50%, -50%) rotate(${sec * 0.1 + min * 6}deg)`;
             // clockHours.style.transform = `translate(-50%, -50%) rotate(${ min * 0.1 + sec * 6}deg)`;
 
         }, 10);
@@ -147,8 +158,8 @@ function resetCounter() {
     moneyDiv.innerHTML = `${euros.toFixed(2)}&euro;`;
 
 
-    clockSeconds.style.transform = `translate(-50%, -50%) rotate(${ hundreth * 0.06 + sec * 6}deg)`;
-    clockMinutes.style.transform = `translate(-50%, -50%) rotate(${ sec * 0.1 + min * 6}deg)`;
+    clockSeconds.style.transform = `translate(-50%, -50%) rotate(${hundreth * 0.06 + sec * 6}deg)`;
+    clockMinutes.style.transform = `translate(-50%, -50%) rotate(${sec * 0.1 + min * 6}deg)`;
 
 }
 
@@ -162,4 +173,24 @@ function fallingCent() {
     setTimeout(() => {
         cln.parentNode.removeChild(cln);
     }, 1500)
+}
+
+function togglePaymentButton() {
+    let b = document.getElementById("payment-button");
+    let ps = document.getElementById("payment-slider");
+    console.log(b.clientWidth);
+    if (b.clientWidth > 100) {
+        ps.classList.remove("active");
+        ps.style.visibility = "hidden";
+
+    } else {
+        ps.classList.add("active");
+        ps.style.visibility = "visible";
+    }
+
+    // setTimeout(() => {
+    //     b.classList.remove("active");
+    //     ps.style.visibility = "hidden";
+    // }, 2000);
+
 }
