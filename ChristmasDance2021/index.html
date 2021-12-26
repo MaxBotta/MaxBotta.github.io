@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Merry Christmas 2021!</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #overlay {
+            width: 100vw;
+            height: 100vh;
+            background: black;
+            position: absolute;
+            z-index: 100;
+            top: 0px;
+            left: 0px;
+        }
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            animation: load 1s infinite;
+        }
+        #start-button {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            border: 1px solid white;
+            padding: 20px;
+            cursor: pointer;
+        }
+        #start-button:hover {
+            background: white;
+            color: black;
+        }
+
+        #greetings {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            background: none;
+            position: absolute;
+            z-index: 100;
+            top: 0px;
+            left: 0px;
+            transition: 1s;
+        }
+        #greetings h1 {
+            font-size: 60px;
+            max-width: 600px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        @keyframes load {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.2;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="WebGL-output"></div>
+    <div id="overlay">
+        <div id="loading">loading...</div>
+        <div id="start-button">START</div>
+    </div>
+    <div id="greetings">
+        <h1>Mr. Santa, Anna and Max wish you all a very Merry X-Mas and best wishes for 2022! </h1>
+    </div>
+    <!-- <script src="./libs/three.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/103/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+    <script src="https://unpkg.com/three@0.104.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="./libs/OrbitControls.js"></script>
+    <script src="./libs/Inflate.min.js"></script>
+    <script src="./libs/FBXLoader.js"></script>
+    <!-- <script src="./dance.js"></script> -->
+    <script src="./snowScene.js"></script>
+</body>
+
+</html>
