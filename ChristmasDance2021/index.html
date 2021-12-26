@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="full-screen" content="yes">
     <title>Merry Christmas 2021!</title>
     <style>
         body {
             margin: 0;
             overflow: hidden;
         }
+
         #overlay {
             width: 100vw;
             height: 100vh;
@@ -18,6 +23,7 @@
             top: 0px;
             left: 0px;
         }
+
         #loading {
             position: absolute;
             top: 50%;
@@ -26,6 +32,7 @@
             color: white;
             animation: load 1s infinite;
         }
+
         #start-button {
             display: none;
             position: absolute;
@@ -37,6 +44,7 @@
             padding: 20px;
             cursor: pointer;
         }
+
         #start-button:hover {
             background: white;
             color: black;
@@ -53,6 +61,7 @@
             left: 0px;
             transition: 1s;
         }
+
         #greetings h1 {
             font-size: 60px;
             max-width: 600px;
@@ -69,9 +78,11 @@
             0% {
                 opacity: 1;
             }
+
             50% {
                 opacity: 0.2;
             }
+
             100% {
                 opacity: 1;
             }
